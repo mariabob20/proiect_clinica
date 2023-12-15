@@ -12,67 +12,68 @@ using proiect_clinica.Models;
 namespace proiect_clinica.Pages.Servicii
 {
     public class EditModel : PageModel
-    {
-        private readonly proiect_clinica.Data.proiect_clinicaContext _context;
+{
+    private readonly proiect_clinica.Data.proiect_clinicaContext _context;
 
-        public EditModel(proiect_clinica.Data.proiect_clinicaContext context)
+    public EditModel(proiect_clinica.Data.proiect_clinicaContext context)
+    {
+        _context = context;
+    }
+
+    [BindProperty]
+    public Serviciu Serviciu { get; set; } = default!;
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null || _context.Serviciu == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        [BindProperty]
-        public Serviciu Serviciu { get; set; } = default!;
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        var serviciu = await _context.Serviciu.FirstOrDefaultAsync(m => m.ID == id);
+        if (serviciu == null)
         {
-            if (id == null || _context.Serviciu == null)
-            {
-                return NotFound();
-            }
+            return NotFound();
+        }
+        Serviciu = serviciu;
+        ViewData["AngajatID"] = new SelectList(_context.Set<Angajat>(), "ID",
+"Nume");
+        return Page();
+    }
 
-            var serviciu =  await _context.Serviciu.FirstOrDefaultAsync(m => m.ID == id);
-            if (serviciu == null)
-            {
-                return NotFound();
-            }
-            Serviciu = serviciu;
-            ViewData["AnagatID"] = new SelectList(_context.Set<Angajat>(), "ID", "Nume");
+    // To protect from overposting attacks, enable the specific properties you want to bind to.
+    // For more details, see https://aka.ms/RazorPagesCRUD.
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+        {
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        _context.Attach(Serviciu).State = EntityState.Modified;
+
+        try
         {
-            if (!ModelState.IsValid)
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!ServiciuExists(Serviciu.ID))
             {
-                return Page();
+                return NotFound();
             }
-
-            _context.Attach(Serviciu).State = EntityState.Modified;
-
-            try
+            else
             {
-                await _context.SaveChangesAsync();
+                throw;
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ServiciuExists(Serviciu.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
         }
 
-        private bool ServiciuExists(int id)
-        {
-          return (_context.Serviciu?.Any(e => e.ID == id)).GetValueOrDefault();
-        }
+        return RedirectToPage("./Index");
     }
+
+    private bool ServiciuExists(int id)
+    {
+        return (_context.Serviciu?.Any(e => e.ID == id)).GetValueOrDefault();
+    }
+}
 }

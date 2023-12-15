@@ -30,7 +30,7 @@
                 <span asp-validation-for="Serviciu.Pret" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Serviciu.AngajatID" class="control-label">Nume angajat</label>
+                <label asp-for="Serviciu.AngajatID" class="control-label">Nume Angajat</label>
                 <select asp-for="Serviciu.AngajatID" class="form-control" asp-items="ViewBag.AngajatID">
                 </select>
                 <span asp-validation-for="Serviciu.AngajatID" class="text-danger"></span>
@@ -47,5 +47,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

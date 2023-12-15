@@ -21,12 +21,20 @@ namespace proiect_clinica.Pages.Servicii
 
         public IList<Serviciu> Serviciu { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        public string CurrentFilter { get; set; }
+
+        public async Task OnGetAsync(string searchString)
         {
-            if (_context.Serviciu != null)
+            CurrentFilter = searchString;
+
+            IQueryable<Serviciu> serviciuIQ = _context.Serviciu.Include(b => b.Angajat);
+
+            if (!String.IsNullOrEmpty(searchString))
             {
-                Serviciu = await _context.Serviciu.Include(b => b.Angajat).ToListAsync();
+                serviciuIQ = serviciuIQ.Where(s => s.Nume.Contains(searchString));
             }
+
+            Serviciu = await serviciuIQ.ToListAsync();
         }
     }
 }
