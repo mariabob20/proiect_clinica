@@ -64,7 +64,7 @@ namespace proiect_clinica.Pages.Angajati
             if (await TryUpdateModelAsync<Angajat>(
                 angajatToUpdate,
                 "Angajat", // Prefixul pentru formular
-                a => a.Nume, a => a.Prenume, a => a.Calificare, a => a.DataAngajare, a => a.Adresa))
+                a => a.Nume, a => a.Prenume, a => a.DataAngajare, a => a.Adresa))
             {
                 UpdateAngajatCalificare(_context, selectedCalificari, angajatToUpdate);
                 await _context.SaveChangesAsync();

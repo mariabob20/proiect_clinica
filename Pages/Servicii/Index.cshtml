@@ -28,9 +28,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Serviciu[0].Angajat.Prenume)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Serviciu[0].Angajat.Calificare)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -52,9 +49,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Angajat.Prenume)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Angajat.Calificare)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
