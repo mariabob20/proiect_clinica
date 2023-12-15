@@ -1,0 +1,50 @@
+﻿@page
+@model proiect_clinica.Pages.Servicii.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Serviciu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Serviciu.Nume" class="control-label"></label>
+                <input asp-for="Serviciu.Nume" class="form-control" />
+                <span asp-validation-for="Serviciu.Nume" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.Durata" class="control-label"></label>
+                <input asp-for="Serviciu.Durata" class="form-control" />
+                <span asp-validation-for="Serviciu.Durata" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.Pret" class="control-label"></label>
+                <input asp-for="Serviciu.Pret" class="form-control" />
+                <span asp-validation-for="Serviciu.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.AngajatID" class="control-label">Nume angajat</label>
+                <select asp-for="Serviciu.AngajatID" class="form-control" asp-items="ViewBag.AngajatID">
+                </select>
+                <span asp-validation-for="Serviciu.AngajatID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
