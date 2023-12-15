@@ -16,9 +16,14 @@ namespace proiect_clinica.Models
         public int Durata { get; set; }
 
         [Column(TypeName = "decimal(6, 2)")]
+
         [Display(Name = "Pret(lei)")]
         public decimal Pret { get; set; }
         public int? AngajatID { get; set; }
-        public Angajat? Angajat { get; set; } //navigation property
+        public Angajat? Angajat { get; set; } // Navigation property
+
+        // O colecție de Programari
+        public ICollection<Programare> Programari { get; set; }
     }
+
 }

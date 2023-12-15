@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using proiect_clinica.Data;
 
@@ -11,9 +12,10 @@ using proiect_clinica.Data;
 namespace proiect_clinica.Migrations
 {
     [DbContext(typeof(proiect_clinicaContext))]
-    partial class proiect_clinicaContextModelSnapshot : ModelSnapshot
+    [Migration("20231215145224_rezerv")]
+    partial class rezerv
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
