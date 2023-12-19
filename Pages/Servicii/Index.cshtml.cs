@@ -19,7 +19,7 @@ namespace proiect_clinica.Pages.Servicii
             _context = context;
         }
 
-        public IList<Serviciu> Serviciu { get;set; } = default!;
+        public IList<Serviciu> Serviciu { get; set; } = default!;
 
         public string CurrentFilter { get; set; }
 

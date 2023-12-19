@@ -12,68 +12,68 @@ using proiect_clinica.Models;
 namespace proiect_clinica.Pages.Servicii
 {
     public class EditModel : PageModel
-{
-    private readonly proiect_clinica.Data.proiect_clinicaContext _context;
-
-    public EditModel(proiect_clinica.Data.proiect_clinicaContext context)
     {
-        _context = context;
-    }
+        private readonly proiect_clinica.Data.proiect_clinicaContext _context;
 
-    [BindProperty]
-    public Serviciu Serviciu { get; set; } = default!;
-
-    public async Task<IActionResult> OnGetAsync(int? id)
-    {
-        if (id == null || _context.Serviciu == null)
+        public EditModel(proiect_clinica.Data.proiect_clinicaContext context)
         {
-            return NotFound();
+            _context = context;
         }
 
-        var serviciu = await _context.Serviciu.FirstOrDefaultAsync(m => m.ID == id);
-        if (serviciu == null)
-        {
-            return NotFound();
-        }
-        Serviciu = serviciu;
-        ViewData["AngajatID"] = new SelectList(_context.Set<Angajat>(), "ID",
-"Nume");
-        return Page();
-    }
+        [BindProperty]
+        public Serviciu Serviciu { get; set; } = default!;
 
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see https://aka.ms/RazorPagesCRUD.
-    public async Task<IActionResult> OnPostAsync()
-    {
-        if (!ModelState.IsValid)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
-            return Page();
-        }
-
-        _context.Attach(Serviciu).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!ServiciuExists(Serviciu.ID))
+            if (id == null || _context.Serviciu == null)
             {
                 return NotFound();
             }
-            else
+
+            var serviciu = await _context.Serviciu.FirstOrDefaultAsync(m => m.ID == id);
+            if (serviciu == null)
             {
-                throw;
+                return NotFound();
             }
+            Serviciu = serviciu;
+            ViewData["AngajatID"] = new SelectList(_context.Set<Angajat>(), "ID",
+    "Nume");
+            return Page();
         }
 
-        return RedirectToPage("./Index");
-    }
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see https://aka.ms/RazorPagesCRUD.
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-    private bool ServiciuExists(int id)
-    {
-        return (_context.Serviciu?.Any(e => e.ID == id)).GetValueOrDefault();
+            _context.Attach(Serviciu).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ServiciuExists(Serviciu.ID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return RedirectToPage("./Index");
+        }
+
+        private bool ServiciuExists(int id)
+        {
+            return (_context.Serviciu?.Any(e => e.ID == id)).GetValueOrDefault();
+        }
     }
-}
 }

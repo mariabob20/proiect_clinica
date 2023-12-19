@@ -20,7 +20,7 @@ namespace proiect_clinica.Pages.Servicii
         }
 
         [BindProperty]
-      public Serviciu Serviciu { get; set; } = default!;
+        public Serviciu Serviciu { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -35,7 +35,7 @@ namespace proiect_clinica.Pages.Servicii
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Serviciu = serviciu;
             }

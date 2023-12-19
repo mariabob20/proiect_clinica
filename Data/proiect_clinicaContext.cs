@@ -9,7 +9,7 @@ namespace proiect_clinica.Data
 {
     public class proiect_clinicaContext : DbContext
     {
-        public proiect_clinicaContext (DbContextOptions<proiect_clinicaContext> options)
+        public proiect_clinicaContext(DbContextOptions<proiect_clinicaContext> options)
             : base(options)
         {
         }

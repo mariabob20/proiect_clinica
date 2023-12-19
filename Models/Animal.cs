@@ -23,6 +23,6 @@ namespace proiect_clinica.Models
         public int ClientID { get; set; }
 
         // Proprietatea de navigare pentru Client
-        public Client Client { get; set; }
+        public Client? Client { get; set; }
     }
 }

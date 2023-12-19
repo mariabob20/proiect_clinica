@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using proiect_clinica.Data;
+using proiect_clinica.Models;
 
 namespace proiect_clinica.Pages.Programari
 {

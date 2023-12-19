@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "Delete";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
 <h1>Delete</h1>
@@ -31,10 +32,10 @@
             @Html.DisplayFor(model => model.Serviciu.Pret)
         </dd>
     </dl>
-    
+
     <form method="post">
         <input type="hidden" asp-for="Serviciu.ID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index">Back to List</a>
-    </form>
+   </form>
 </div>

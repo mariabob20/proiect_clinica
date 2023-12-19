@@ -29,12 +29,12 @@ namespace proiect_clinica.Pages.Servicii
 
         [BindProperty]
         public Serviciu Serviciu { get; set; } = default!;
-        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
-        {
-          if (!ModelState.IsValid || _context.Serviciu == null || Serviciu == null)
+        {              
+            if (!ModelState.IsValid || _context.Serviciu == null || Serviciu == null)
             {
                 return Page();
             }

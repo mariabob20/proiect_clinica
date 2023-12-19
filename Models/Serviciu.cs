@@ -23,7 +23,7 @@ namespace proiect_clinica.Models
         public Angajat? Angajat { get; set; } // Navigation property
 
         // O colecție de Programari
-        public ICollection<Programare> Programari { get; set; }
+        public ICollection<Programare>? Programari { get; set; }
     }
 
 }
