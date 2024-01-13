@@ -38,8 +38,9 @@ namespace proiect_clinica.Pages.Programari
                 return NotFound();
             }
             Programare = programare;
-           ViewData["ClientID"] = new SelectList(_context.Client, "ID", "ID");
-           ViewData["ServiciuID"] = new SelectList(_context.Serviciu, "ID", "ID");
+            ViewData["ClientID"] = new SelectList(_context.Client, "ID", "NumeComplet");
+            ViewData["ServiciuID"] = new SelectList(_context.Serviciu, "ID", "Nume");
+
             return Page();
         }
 

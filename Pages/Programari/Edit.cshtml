@@ -20,14 +20,14 @@
                 <span asp-validation-for="Programare.Data" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Programare.ClientID" class="control-label"></label>
-                <select asp-for="Programare.ClientID" class="form-control" asp-items="ViewBag.ClientID"></select>
-                <span asp-validation-for="Programare.ClientID" class="text-danger"></span>
+                <label asp-for="Programare.Client.NumeComplet" class="control-label"></label>
+                <select asp-for="Programare.Client.NumeComplet" class="form-control" asp-items="ViewBag.ClientID"></select>
+                <span asp-validation-for="Programare.Client.NumeComplet" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Programare.ServiciuID" class="control-label"></label>
-                <select asp-for="Programare.ServiciuID" class="form-control" asp-items="ViewBag.ServiciuID"></select>
-                <span asp-validation-for="Programare.ServiciuID" class="text-danger"></span>
+                <label asp-for="Programare.Serviciu.Nume" class="control-label"></label>
+                <select asp-for="Programare.Serviciu.Nume" class="form-control" asp-items="ViewBag.ServiciuID"></select>
+                <span asp-validation-for="Programare.Serviciu.Nume" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
